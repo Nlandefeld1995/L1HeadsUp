@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
+    <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+    <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css'>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+
+</head>
+
+<body>
+    <div id="backbutton" class="containerback" style="display: none;">
+        <div class="menu-icon back-arrow">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+    </div>
+    <div id="main">
+        <div class="container" style="width:25%;">
+            <div class="gauge-container" id="whatsnextcontainer">
+                <span class="center percentage"><span class="value">What To Touch Next</span></span>
+            </div>
+        </div>
+        <div class="container" style="width:25%;">
+            <div class="gauge-container" id="healthcontainer">
+                <svg class="gauge" viewBox="0 0 150 150" preserveAscpectRatio="xMinYMin Meet">
+                  <circle class="rail" r="67" cx="75" cy="75" />
+                  <circle class="progress" r="67" data-target="84" cx="75" cy="75" />
+               </svg>
+                <span class="center percentage"><span id="overaltargetval" class="value">0</span><span class="percentSymbol">%</span></span>
+            </div>
+            <h1>Overall Health</h1>
+        </div>
+
+        <div class="container" style="width:25%;">
+            <div class="gauge-container" id="goalscontainer">
+                <svg class="gauge" viewBox="0 0 150 150" preserveAscpectRatio="xMinYMin Meet">
+                  <circle class="rail" r="67" cx="75" cy="75" />
+                  <circle class="progress" r="67" data-target="84" cx="75" cy="75" />
+               </svg>
+                <span class="center percentage"><span class="value">0</span><span class="percentSymbol">%</span></span>
+            </div>
+            <h1>Goals</h1>
+        </div>
+        <div class="container" style="width:25%;">
+            <div class="gauge-container" id="helpcontainer">
+                <span class="center percentage"><span class="value">Help</span></span>
+            </div>
+        </div>
+    </div>
+    <div id="health" style="display:none;">
+        <div class="container" style="width:25%;">
+            <div class="gauge-container" id="complianceoverview">
+                <svg class="gauge" viewBox="0 0 150 150" preserveAscpectRatio="xMinYMin Meet">
+                    <circle class="rail" r="67" cx="75" cy="75" />
+                    <circle id='compliancecircle' class="progress" r="67" data-target="84" cx="75" cy="75" />
+                 </svg>
+                <span class="center percentage"><span id="compliancecirclespan" class="value">0</span><span class="percentSymbol">%</span></span>
+            </div>
+            <h1>Compliance</h1>
+        </div>
+        <div class="container" style="width:25%;">
+            <div class="gauge-container" id="csatgauge">
+                <svg class="gauge" viewBox="0 0 150 150" preserveAscpectRatio="xMinYMin Meet">
+                  <circle class="rail" r="67" cx="75" cy="75" />
+                  <circle id='csatcircle' class="progress" r="67" data-target="84" cx="75" cy="75" />
+               </svg>
+                <span class="center percentage"><span id="csatcirclespan" class="value">0</span><span class="percentSymbol">%</span></span>
+            </div>
+            <h1>CSAT</h1>
+        </div>
+        <div class="container" style="width:25%;">
+            <div class="gauge-container" id="caseclosures">
+                <svg class="gauge" viewBox="0 0 150 150" preserveAscpectRatio="xMinYMin Meet">
+                  <circle class="rail" r="67" cx="75" cy="75" />
+                  <circle id="velocitycircle" class="progress" r="67" data-target="84" cx="75" cy="75" />
+               </svg>
+                <span class="center percentage"><span id="velocitycirclespan" class="value">0</span><span class="percentSymbol">%</span></span>
+            </div>
+            <h1>Personal Velocity</h1>
+        </div>
+        <div class="container" style="width:25%;">
+            <div class="gauge-container" id="">
+                <span class="center percentage"><span id="" class="value">Phone Health</span><br><span class="percentSymbol">Coming Soon</span></span>
+            </div>
+        </div>
+    </div>
+    <div id="goals" style="display:none;">
+        <div class="container" style="width:50%;">
+            <div class="gauge-container" id="dailygoals">
+                <svg class="gauge" viewBox="0 0 150 150" preserveAscpectRatio="xMinYMin Meet">
+                  <circle class="rail" r="67" cx="75" cy="75" />
+                  <circle id='dailycircle' class="progress" r="67" data-target="84" cx="75" cy="75" />
+               </svg>
+                <span class="center percentage"><span id="dailycirclespan" class="value">0</span><span class="percentSymbol">%</span></span>
+            </div>
+            <h1>Daily</h1>
+        </div>
+        <div class="container" style="width:50%;">
+            <div class="gauge-container" id="weeklygoals">
+                <svg class="gauge" viewBox="0 0 150 150" preserveAscpectRatio="xMinYMin Meet">
+                  <circle class="rail" r="67" cx="75" cy="75" />
+                  <circle id='weeklycircle' class="progress" r="67" data-target="84" cx="75" cy="75" />
+               </svg>
+                <span class="center percentage"><span id="weeklycirclespan" class="value">0</span><span class="percentSymbol">%</span></span>
+            </div>
+            <h1>weekly</h1>
+        </div>
+    </div>
+    <div id="sevensday" style="display: none;">
+        <div class="container" style="width:33%;">
+            <div class="gauge-container2" id="">
+                <svg class="gauge" viewBox="0 0 150 150" preserveAscpectRatio="xMinYMin Meet">
+                  <circle class="rail" r="67" cx="75" cy="75" />
+                  <circle id='daysevensfollowcircle' class="progress" r="67" data-target="84" cx="75" cy="75" />
+               </svg>
+                <span class="center percentage"><span id="daysevensfollowcirclespan" class="value">0</span><span class="percentSymbol">/7</span></span>
+            </div>
+            <h1>Daily Follow Up</h1>
+        </div>
+        <div class="container" style="width:33%;">
+            <div class="gauge-container2" id="">
+                <svg class="gauge" viewBox="0 0 150 150" preserveAscpectRatio="xMinYMin Meet">
+                  <circle class="rail" r="67" cx="75" cy="75" />
+                  <circle id='daysevensclosedcircle' class="progress" r="67" data-target="84" cx="75" cy="75" />
+               </svg>
+                <span class="center percentage"><span id="daysevensclosedcirclespan" class="value">0</span><span class="percentSymbol">/7</span></span>
+            </div>
+            <h1>Daily Closed</h1>
+        </div>
+        <div class="container" style="width:33%;">
+            <div class="gauge-container2" id="">
+                <svg class="gauge" viewBox="0 0 150 150" preserveAscpectRatio="xMinYMin Meet">
+                  <circle class="rail" r="67" cx="75" cy="75" />
+                  <circle id='daysevenstakencircle' class="progress" r="67" data-target="84" cx="75" cy="75" />
+               </svg>
+                <span class="center percentage"><span id="daysevenstakencirclespan" class="value">0</span><span class="percentSymbol">/7</span></span>
+            </div>
+            <h1>Daily Taken</h1>
+        </div>
+    </div>
+    <div id="sevensweek" style="display: none;">
+        <div class="container" style="width:33%;">
+            <div class="gauge-container2" id="">
+                <svg class="gauge" viewBox="0 0 150 150" preserveAscpectRatio="xMinYMin Meet">
+                  <circle class="rail" r="67" cx="75" cy="75" />
+                  <circle id='weeksevensfollowcircle' class="progress" r="67" data-target="84" cx="75" cy="75" />
+               </svg>
+                <span class="center percentage"><span id="weeksevensfollowcirclespan" class="value"></span><span class="percentSymbol">/35</span></span>
+            </div>
+            <h1>Weekly Follow Up</h1>
+            <br>
+            <div id="followupface"></div>
+        </div>
+        <div class="container" style="width:33%;">
+            <div class="gauge-container2" id="">
+                <svg class="gauge" viewBox="0 0 150 150" preserveAscpectRatio="xMinYMin Meet">
+                  <circle class="rail" r="67" cx="75" cy="75" />
+                  <circle id='weeksevensclosedcircle' class="progress" r="67" data-target="84" cx="75" cy="75" />
+               </svg>
+                <span class="center percentage"><span id="weeksevensclosedcirclespan" class="value">0</span><span class="percentSymbol">/35</span></span>
+            </div>
+            <h1>Weekly Closed</h1>
+            <br>
+            <div id="closedface2"></div>
+        </div>
+        <div class="container" style="width:33%;">
+            <div class="gauge-container2" id="">
+                <svg class="gauge" viewBox="0 0 150 150" preserveAscpectRatio="xMinYMin Meet">
+                  <circle class="rail" r="67" cx="75" cy="75" />
+                  <circle id='weeksevenstakencircle' class="progress" r="67" data-target="84" cx="75" cy="75" />
+               </svg>
+                <span class="center percentage"><span id="weeksevenstakencirclespan" class="value">0</span><span class="percentSymbol">/35</span></span>
+            </div>
+            <h1>Weekly Taken</h1>
+            <br>
+            <div id="takenface"></div>
+        </div>
+    </div>
+    <div id="next" style="display:none;">
+        <div class="container" style="width:33%;">
+            <div class="gauge-container" id="opencasesGauge">
+                <span class="center percentage"><span id="opencasescirclespan" class="value">0</span><br><span>Open Cases</span></span>
+            </div>
+        </div>
+        <div class="container">
+            <div class="gauge-container" id="followupGauge">
+                <span class="center percentage"><span id="followuponcirclespan" class="value">0</span><br><span>Follow Up ON</span></span>
+            </div>
+        </div>
+        <div class="container" style="width:33%;">
+            <div class="gauge-container" id="pullnextGauge">
+                <span class="center percentage"><span id="" class="value"></span><br><span>Cases To Pull Next</span></span>
+            </div>
+        </div>
+    </div>
+    <div id="caseclosuresdiv" style="display:none;">
+
+        <div class="container" style="width:50%;">
+            <div class="gauge-container" id="weekteamcase">
+                <span class="center percentage"><span id="opencasescirclespan" class="value"><h1 id="rankvalue"></h1></span><span>In Case Closures</span></span>
+            </div>
+        </div>
+        <div class="container" style="width:50%;">
+            <div id="chartdiv"></div>
+            <h1>Weekly Cases By Day</h1>
+        </div>
+    </div>
+    <div id="casecompliance" style="display: none;">
+
+        <div class="container" style="width:33%;">
+            <div class="gauge-container" id="todaycompliantbutton">
+                <span class="center percentage"><span id="opencasescirclespan" class="value"><h1 id="contacttodayval"></h1></span><span>Contact Today</span></span>
+            </div>
+        </div>
+        <div class="container" style="width:33%;">
+            <div class="gauge-container" id="compliantbutton">
+                <span class="center percentage"><span id="opencasescirclespan" class="value"><h1 id="compliantval"></h1></span><span>Compliant</span></span>
+            </div>
+        </div>
+    </div>
+    <div id="non_compliant_cases" style="display:none;">
+        <div class="" style="width:100%;">
+            <div id="noncompliantthead">
+
+            </div>
+            <div id="noncomplianttbody">
+
+            </div>
+        </div>
+    </div>
+    <div id="today_compliant_cases" style="display:none;">
+        <div class="" style="width:100%;">
+            <div id="todaycompliantthead">
+
+            </div>
+            <div id="todaycomplianttbody">
+
+            </div>
+        </div>
+    </div>
+    <div id="compliant_cases" style="display:none;">
+        <div class="" style="width:100%;">
+            <div id="compliantthead">
+
+            </div>
+            <div id="complianttbody">
+
+            </div>
+        </div>
+    </div>
+    <div id="teamcases" style="display:none;">
+        <div class="container" style="width:100%;">
+            <iframe src="https://public.domo.com/cards/dPZx6" width="600" height="600" marginheight="0" marginwidth="0" frameborder="0" scrolling="no"></iframe>
+        </div>
+    </div>
+    <div id="helpdiv" style="display:none;">
+        <div class="container" style="width:33%; background-color: #565656; vertical-align: inherit;">
+            <div id="domo_app">
+                <div class="user_options">
+                    <div id="case_num_wrapper">
+                        <div id="case_num_txt_div">
+                            <h4>Case #</h4>
+                        </div>
+                        <div><textarea id="case_num_txt" maxlength="8" placeholder="87654321"></textarea></div>
+                    </div>
+                    <div id="category_wrapper">
+                        <div id="category_txt_div">
+                            <h4>Category</h4>
+                        </div>
+                        <div><select id="category">
+                      <option value = "DataSet">Alerts</option>
+                      <option value = "DataFlow">Buzz</option>
+                      <option value = "WorkBench">Cards/Pages</option>
+                      <option value = "WorkBench">Data Manip</option>
+                      <option value = "WorkBench">DataSource</option>
+                      <option value = "WorkBench">Developer</option>
+                      <option value = "WorkBench">User Manage</option>
+                      <option value = "WorkBench">WorkBench</option>
+                      <option value = "WorkBench">Other</option>
+                      <option value = "WorkBench">Mobile</option>
+                    </select>
+                        </div>
+                        <div id="description_wrapper">
+                            <div id="description_txt_div">
+                                <h4>Description</h4>
+                            </div>
+                            <div><textarea id="description_txt" maxlength="80" placeholder="Briefly describe issue..."></textarea></div>
+                        </div>
+                        <div id="priority_wrapper">
+                            <div id="priority_radio_div">
+                                <h4>Priority</h4>
+                            </div>
+                            <div>
+                                <select id="priority">
+                        <option value = "Med">Med</option>
+                        <option value = "High">High</option>
+                        <option value = "Prod">Prod</option>
+                        <option value = "Phone">Phone</option>
+                      </select>
+                            </div>
+                        </div>
+                        <div id="submit_btn_div">
+                            <div id="submit_btn">Let's Do This!</div>
+                        </div>
+                        <div id="curtain">
+                            <div id="submit_complete_wrapper">
+                                <button id="submit_complete_btn">Thank You</button>
+                                <h4>Someone will be with you shortly</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="container" style="width:67%; background-color: #555555; vertical-align: inherit; border-left: solid white;">
+            <div id="domo_app_done">
+                <div id="queue_table_div" class="wrapper">
+                    <table id="queue_table" class="table">
+                        <thead>
+                            <tr>
+                                <th class="priority">Priority</th>
+                                <th class="wait_time">Wait</th>
+                                <th class="employee_name">Name</th>
+                                <th class="case_num">Case #</th>
+                                <th class="description">Description</th>
+                                <th class="resolve">Resolve</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div id="followupondiv" style="display:none;">
+        <div class="" style="width:100%;">
+            <div id="followuponhead">
+
+            </div>
+            <div id="followuponbody">
+
+            </div>
+        </div>
+    </div>
+    <div id="pullnextdiv" style="display:none;">
+        <div class="" style="width:100%;">
+            <div id="pullnexthead">
+
+            </div>
+            <div id="pullnextbody">
+            </div>
+        </div>
+    </div>
+    <div id="opencasesdiv" style="display:none;">
+        <div class="" style="width:100%;">
+            <div id="opencaseshead">
+
+            </div>
+            <div id="opencasesbody">
+
+            </div>
+        </div>
+    </div>
+    <div id="csatdiv" style="display:none;">
+        <div class="container" style="width:25%">
+            <div class="gauge-container" id="perfectCSATGauge">
+                <span class="center percentage"><span id="perfectcsat" class="value">0</span><br><span>Perfect CSAT's</span> <br>
+                <h4 id="perfect_csat_date">Last Perfect CSAT: </h4>
+                </span>
+            </div>
+
+        </div>
+        <div class="container" style="width:25%">
+            <div class="gauge-container" id="totalCSATGauge">
+                <span class="center percentage"><span id="totalcsat" class="value">0</span><br><span>Total CSAT's</span><br>
+                <h4 id="csat_date">Last CSAT: </h4>
+                </span>
+            </div>
+        </div>
+        <div class="container" style="width:25%">
+            <div class="gauge-container" id="DSATGauge">
+                <span class="center percentage"><span id="dcsat" class="value">0</span><br><span>DISAT's</span><br>
+                <h4 id="disat_date">Last DISAT: </h4>
+                </span>
+            </div>
+        </div>
+        <div class="container" style="width:25%">
+            <div class="gauge-container" id="">
+                <span class="center percentage"><span id="scorecsat" class="value">0</span><br><span>Overal CSAT's</span><br><span style="font-size:50%;">(goal 4.5)</span></span>
+            </div>
+        </div>
+    </div>
+    <div id="perfectcsatdiv" style="display:none; ">
+    </div>
+    <div id="dcsatdiv" style="display:none;">
+        <div id="totaldsatdiv" style="width:50%; display: grid;"></div>
+        <div id="dsat_cat_div" style="width:50%; background: lightblue;"></div>
+    </div>
+    <div id="totalcsatdiv" style="display:none;">
+
+    </div>
+
+
+    <script src="js/amcharts.js"></script>
+    <script src="https://www.amcharts.com/lib/3/gauge.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+
+    <script src="js/domo.js"></script>
+    <script src="js/tweenmax.min.js"></script>
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/coach.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>

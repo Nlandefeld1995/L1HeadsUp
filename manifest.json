@@ -1,0 +1,422 @@
+{
+    "name": "L1 HUD (Stella)",
+    "version": "2.0.0",
+    "size": {
+        "width": 5,
+        "height": 4
+    },
+    "fullpage": true,
+    "mapping": [{
+            "alias": "taken",
+            "dataSetId": "103c6ee3-2e70-4e3f-ac6c-00c5deb0fdc9",
+            "fields": [{
+                    "alias": "name",
+                    "columnName": "Name"
+                },
+                {
+                    "alias": "total",
+                    "columnName": "Total"
+                },
+                {
+                    "alias": "date",
+                    "columnName": "Date"
+                },
+                {
+                    "alias": "today",
+                    "columnName": "Today"
+                }
+            ]
+        },
+        {
+            "alias": "velocity",
+            "dataSetId": "20047037-3faf-45ff-9e42-73499b08a1c5",
+            "fields": [{
+                    "alias": "name",
+                    "columnName": "Name"
+                },
+                {
+                    "alias": "total",
+                    "columnName": "velocity"
+                }
+            ]
+        },
+        {
+            "alias": "c_rank",
+            "dataSetId": "150c8041-9bcd-423a-b519-2dd60607ef97",
+            "fields": [{
+                    "alias": "name",
+                    "columnName": "OwnerName"
+                },
+                {
+                    "alias": "total",
+                    "columnName": "Total"
+                },
+                {
+                    "alias": "rank",
+                    "columnName": "Rank"
+                }
+            ]
+        },
+        {
+            "alias": "closures",
+            "dataSetId": "2611a32d-fac3-4d25-a2a0-9eedf26d6567",
+            "fields": [{
+                    "alias": "name",
+                    "columnName": "OwnerName"
+                },
+                {
+                    "alias": "total",
+                    "columnName": "Total"
+                },
+                {
+                    "alias": "monday",
+                    "columnName": "Monday"
+                },
+                {
+                    "alias": "tuesday",
+                    "columnName": "Tuesday"
+                },
+                {
+                    "alias": "wednesday",
+                    "columnName": "Wednesday"
+                },
+                {
+                    "alias": "thursday",
+                    "columnName": "Thursday"
+                },
+                {
+                    "alias": "friday",
+                    "columnName": "Friday"
+                },
+                {
+                    "alias": "today",
+                    "columnName": "Today"
+                }
+            ]
+        },
+        {
+            "alias": "compliance",
+            "dataSetId": "3b224a29-5d93-4c6a-b13a-4416a93d6bd8",
+            "fields": [{
+                    "alias": "name",
+                    "columnName": "OwnerName"
+                },
+                {
+                    "alias": "case",
+                    "columnName": "CaseNumber"
+                },
+                {
+                    "alias": "compliant",
+                    "columnName": "case_contact_compliance"
+                },
+                {
+                    "alias": "id",
+                    "columnName": "id"
+                }
+            ]
+        },
+        {
+            "alias": "followup",
+            "dataSetId": "65cf72de-8644-4ccd-94aa-9cde3a879d08",
+            "fields": [{
+                    "alias": "name",
+                    "columnName": "Name"
+                },
+                {
+                    "alias": "case",
+                    "columnName": "CaseNumber"
+                },
+                {
+                    "alias": "date",
+                    "columnName": "CreatedDate"
+                },
+                {
+                    "alias": "status",
+                    "columnName": "Status"
+                },
+                {
+                    "alias": "lastmodified",
+                    "columnName": "LastModifiedDate"
+                },
+                {
+                    "alias": "priority",
+                    "columnName": "Priority"
+                },
+                {
+                    "alias": "bucket",
+                    "columnName": "Support_Category__c"
+                },
+                {
+                    "alias": "id",
+                    "columnName": "id"
+                }
+            ]
+        },
+        {
+            "alias": "open_cases",
+            "dataSetId": "87511305-4fd4-4081-9b09-5bc6f3c3b1d7",
+            "fields": [{
+                    "alias": "name",
+                    "columnName": "Name"
+                },
+                {
+                    "alias": "case",
+                    "columnName": "CaseNumber"
+                },
+                {
+                    "alias": "date",
+                    "columnName": "CreatedDate"
+                },
+                {
+                    "alias": "status",
+                    "columnName": "Status"
+                },
+                {
+                    "alias": "lastmodified",
+                    "columnName": "LastModifiedDate"
+                },
+                {
+                    "alias": "priority",
+                    "columnName": "Priority"
+                },
+                {
+                    "alias": "bucket",
+                    "columnName": "Support_Category__c"
+                },
+                {
+                    "alias": "id",
+                    "columnName": "id"
+                }
+            ]
+        },
+        {
+            "alias": "pull_next",
+            "dataSetId": "ca32b7ed-3b31-42ba-8cf9-659cdbdb13c2",
+            "fields": [{
+                    "alias": "name",
+                    "columnName": "Name"
+                },
+                {
+                    "alias": "case",
+                    "columnName": "CaseNumber"
+                },
+                {
+                    "alias": "date",
+                    "columnName": "CreatedDate"
+                },
+                {
+                    "alias": "status",
+                    "columnName": "Status"
+                },
+                {
+                    "alias": "lastmodified",
+                    "columnName": "LastModifiedDate"
+                },
+                {
+                    "alias": "priority",
+                    "columnName": "Priority"
+                },
+                {
+                    "alias": "bucket",
+                    "columnName": "Bucket"
+                },
+                {
+                    "alias": "id",
+                    "columnName": "id"
+                }
+            ]
+        },
+        {
+            "alias": "targets",
+            "dataSetId": "b1fda56c-bb26-4844-b410-e66892c7af0e",
+            "fields": [{
+                    "alias": "case",
+                    "columnName": "caseclosure target"
+                },
+                {
+                    "alias": "name",
+                    "columnName": "OwnerName"
+                },
+                {
+                    "alias": "compliance",
+                    "columnName": "compliance target"
+                },
+                {
+                    "alias": "velocity",
+                    "columnName": "velocity"
+                },
+                {
+                    "alias": "target",
+                    "columnName": "overall target"
+                },
+                {
+                    "alias": "csat",
+                    "columnName": "csat target"
+                }
+            ]
+        },
+        {
+            "alias": "targets2",
+            "dataSetId": "a7e20558-d66d-43aa-8f9b-008e5987ed97",
+            "fields": [{
+                    "alias": "name",
+                    "columnName": "name"
+                },
+                {
+                    "alias": "overalweek",
+                    "columnName": "Overal week"
+                },
+                {
+                    "alias": "today",
+                    "columnName": "Today"
+                },
+                {
+                    "alias": "week",
+                    "columnName": "Week"
+                },
+                {
+                    "alias": "overalgoal",
+                    "columnName": "overal"
+                }
+            ]
+        },
+        {
+            "alias": "csat",
+            "dataSetId": "32699c02-40a6-4387-9f2c-76c20a4df50c",
+            "fields": [{
+                    "alias": "name",
+                    "columnName": "name"
+                },
+                {
+                    "alias": "perfect",
+                    "columnName": "Perfect"
+                },
+                {
+                    "alias": "total",
+                    "columnName": "total"
+                },
+                {
+                    "alias": "dsat",
+                    "columnName": "Dsat"
+                },
+                {
+                    "alias": "score",
+                    "columnName": "Survey Score"
+                }
+            ]
+        },
+        {
+            "alias": "csatmeta",
+            "dataSetId": "0a4f13d3-39ab-4a09-b6a6-ee72532d7d14",
+            "fields": [{
+                    "alias": "case",
+                    "columnName": "Case"
+                },
+                {
+                    "alias": "name",
+                    "columnName": "name"
+                },
+                {
+                    "alias": "easy",
+                    "columnName": "Made it Easy"
+                },
+                {
+                    "alias": "satisfaction",
+                    "columnName": "Resolved to Satisfaction"
+                },
+                {
+                    "alias": "expectations",
+                    "columnName": "Exceeded Expectations"
+                },
+                {
+                    "alias": "easier",
+                    "columnName": "Ways to Make Easier"
+                },
+                {
+                    "alias": "satisfy",
+                    "columnName": "Ways to Satisfy"
+                },
+                {
+                    "alias": "recommendations",
+                    "columnName": "Recommendations"
+                },
+                {
+                    "alias": "id",
+                    "columnName": "id"
+                }
+            ]
+        },
+        {
+            "alias": "followedupon",
+            "dataSetId": "747813b1-683c-4a6c-8b1f-02238f4ae6ba",
+            "fields": [{
+                    "alias": "name",
+                    "columnName": "name"
+                },
+                {
+                    "alias": "total",
+                    "columnName": "Total"
+                },
+                {
+                    "alias": "monday",
+                    "columnName": "Monday"
+                },
+                {
+                    "alias": "tuesday",
+                    "columnName": "Tuesday"
+                },
+                {
+                    "alias": "wednesday",
+                    "columnName": "Wednesday"
+                },
+                {
+                    "alias": "thursday",
+                    "columnName": "Thursday"
+                },
+                {
+                    "alias": "friday",
+                    "columnName": "Friday"
+                },
+                {
+                    "alias": "today",
+                    "columnName": "Today"
+                }
+            ]
+        },
+        {
+            "alias": "dsat_meta",
+            "dataSetId": "19b34ace-a59b-4fdb-814b-2b84a4199e9e",
+            "fields": [{
+                    "alias": "name",
+                    "columnName": "Name"
+                },
+                {
+                    "alias": "total",
+                    "columnName": "total"
+                },
+                {
+                    "alias": "reason",
+                    "columnName": "Disat_Reason_Category"
+                }
+            ]
+        },
+        {
+            "alias": "csat_dates",
+            "dataSetId": "cabbd8a1-0358-40fb-a22c-e20b9fe202ed",
+            "fields": [{
+                    "alias": "date",
+                    "columnName": "Date"
+                },
+                {
+                    "alias": "name",
+                    "columnName": "Name"
+                },
+                {
+                    "alias": "bucket",
+                    "columnName": "Bucket"
+                }
+            ]
+        }
+    ],
+    "id": ""
+}
